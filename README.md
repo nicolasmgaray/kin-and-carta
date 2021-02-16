@@ -14,7 +14,7 @@ The API docs are hosted here: <https://documenter.getpostman.com/view/3658900/TW
 
 # Deployment
 
-The API is deployed here: <https://documenter.getpostman.com/view/3658900/TWDUoxNQ>
+The API is deployed here: <https://kincarta.herokuapp.com/>
 
 ## Environment Variables
 
