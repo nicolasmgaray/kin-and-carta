@@ -8,6 +8,14 @@ To acomplish this challenge I used:
 - Joi to validate request data
 - Jest to test the endpoints
 
+# API Docs
+
+The API docs are hosted here: <https://documenter.getpostman.com/view/3658900/TWDUoxNQ>
+
+# Deployment
+
+The API is deployed here: <https://documenter.getpostman.com/view/3658900/TWDUoxNQ>
+
 ## Environment Variables
 
 The project has 2 .env files: 1 for the dev env (.dev), and 1 for the testing env (.dev.testing).
