@@ -1,4 +1,4 @@
-const { reset } = require("nodemon");
+const ObjectId = require("mongoose").Types.ObjectId;
 const ContactService = require("../services/contact.services");
 const {
   newContactSchema,
@@ -15,6 +15,7 @@ const addContact = async ({ body }, res) => {
 
 const updateContact = async ({ params, body }, res) => {
   const { id } = params;
+  if (!ObjectId.isValid(id)) return res.status(400).send("Invalid ID");
   const { error, value: contact } = updateContactSchema.validate(body);
   if (error) return res.status(400).json({ error: error.details[0].message });
   const result = await ContactService.updateContact(id, contact);
@@ -28,14 +29,22 @@ const searchContact = async ({ query }, res) => {
   return res.json(result);
 };
 
-const getContact = async ({ params }, res) => {
+const getContactById = async ({ params }, res) => {
   const { id } = params;
-  const result = await ContactService.getContact(id);
+  if (!ObjectId.isValid(id)) return res.status(400).send("Invalid ID");
+  const result = await ContactService.getContactById(id);
+  return res.json(result);
+};
+
+const getContactsByLocation = async ({ params }, res) => {
+  const { location } = params;
+  const result = await ContactService.getContactsByLocation(location);
   return res.json(result);
 };
 
 const deleteContact = async ({ params }, res) => {
   const { id } = params;
+  if (!ObjectId.isValid(id)) return res.status(400).send("Invalid ID");
   const result = await ContactService.deleteContact(id);
   return res.json(result);
 };
@@ -43,7 +52,8 @@ const deleteContact = async ({ params }, res) => {
 module.exports = {
   addContact,
   updateContact,
-  getContact,
+  getContactById,
   deleteContact,
   searchContact,
+  getContactsByLocation,
 };

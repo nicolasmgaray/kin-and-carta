@@ -8,7 +8,11 @@ const searchContact = async ({ email, phone }) => {
   const query = [];
   if (email) query.push({ email: email });
   if (phone) query.push({ personalPhone: phone }, { workPhone: phone });
-  return await Contact.find().or(query);
+  return await Contact.findOne().or(query);
+};
+
+const getContactsByLocation = async (location) => {
+  return await Contact.find({ address: { $regex: location, $options: "i" } });
 };
 
 const updateContact = async (id, data) => {
@@ -19,7 +23,7 @@ const deleteContact = async (id) => {
   return await Contact.findByIdAndDelete(id);
 };
 
-const getContact = async (id) => {
+const getContactById = async (id) => {
   return await Contact.findById(id);
 };
 
@@ -27,6 +31,7 @@ module.exports = {
   addContact,
   updateContact,
   deleteContact,
-  getContact,
+  getContactById,
   searchContact,
+  getContactsByLocation,
 };
