@@ -7,7 +7,7 @@ image, email, birthdate, phone number (work, personal), and address.
 
 const ContactSchema = new mongoose.Schema({
   name: { type: String, required: true },
-  email: { type: String },
+  email: { type: String, required: true, unique: true },
   company: { type: String },
   profilePicture: { type: String },
   birthdate: { type: Date },
