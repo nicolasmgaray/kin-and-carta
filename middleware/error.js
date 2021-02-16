@@ -9,6 +9,6 @@ process.on("unhandledRejection", (err) => {
 });
 
 module.exports = function (err, req, res, next) {
+  res.status(500).send("Unexpected Error");
   log(err);
-  res.status(500).json({ error: err.message });
 };
