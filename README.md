@@ -18,9 +18,7 @@ The API is deployed here: <https://kincarta.herokuapp.com/>
 
 ## Environment Variables
 
-The project has 2 .env files: 1 for the dev env (.dev), and 1 for the testing env (.dev.testing).
-
-If this project is deployed, it should use the system env variables to set NODE_ENV to production and DB_CONNECTION to the production MongoDB connection URL.
+DB_CONNECTION: MongoDB connection URI
 
 ## Run the project (development)
 
